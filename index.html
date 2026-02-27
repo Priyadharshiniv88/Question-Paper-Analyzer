@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamCram AI – Last‑Night Study Partner</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="blob"></div>
+    <div class="blob blob2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-brain logo-icon"></i>
+                <span class="logo-text">ExamCram<span class="accent">AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="#how-it-works"><i class="fas fa-magic"></i> How it Works</a>
+                <a href="#features"><i class="fas fa-star"></i> Features</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn-outline" id="themeToggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <span class="badge">🚀 AI-Powered Analysis</span>
+                <h1 class="main-title">Crack your exam<br>in <span class="gradient-text">one night</span></h1>
+                <p class="subtitle">Upload 5 years of question papers. Get a smart revision plan in 2 minutes.</p>
+                
+                <!-- Upload Card -->
+                <div class="upload-card" id="uploadCard">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Drag & drop your PDF here</h3>
+                        <p class="upload-hint">or</p>
+                        <button class="btn-primary" id="browseBtn"><i class="fas fa-folder-open"></i> Browse Files</button>
+                        <input type="file" id="fileInput" accept=".pdf" hidden>
+                        <p class="file-limit"><i class="fas fa-info-circle"></i> Supports PDF up to 10MB</p>
+                    </div>
+                    
+                    <!-- Progress (hidden) -->
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText"><i class="fas fa-spinner fa-pulse"></i> Uploading...</p>
+                    </div>
+                </div>
+
+                <!-- Trust badges -->
+                <div class="trust-badges">
+                    <span><i class="fas fa-shield-alt"></i> 100% Private</span>
+                    <span><i class="fas fa-bolt"></i> Instant results</span>
+                    <span><i class="fas fa-chart-line"></i> Used by 10k+ students</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="how-it-works">
+            <h2 class="section-title">How <span class="gradient-text">it works</span></h2>
+            <div class="steps">
+                <div class="step-card glass">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-file-pdf step-icon"></i>
+                    <h3>Upload PDF</h3>
+                    <p>Upload your previous years' question papers</p>
+                </div>
+                <div class="step-card glass">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-robot step-icon"></i>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI finds patterns and repeated questions</p>
+                </div>
+                <div class="step-card glass">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-clipboard-list step-icon"></i>
+                    <h3>Get Plan</h3>
+                    <p>Receive your prioritized revision strategy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <h2 class="section-title">Why <span class="gradient-text">students love us</span></h2>
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <i class="fas fa-repeat feature-icon"></i>
+                    <h3>Super Repeaters</h3>
+                    <p>Questions asked every year – guaranteed marks</p>
+                </div>
+                <div class="feature-card glass">
+                    <i class="fas fa-fire feature-icon"></i>
+                    <h3>Hot Topics</h3>
+                    <p>Frequently repeated topics with high probability</p>
+                </div>
+                <div class="feature-card glass">
+                    <i class="fas fa-clock feature-icon"></i>
+                    <h3>1‑Day Cram Plan</h3>
+                    <p>Hour‑by‑hour strategy for last‑night warriors</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (initially hidden) -->
+        <section id="results" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2 class="section-title">Your <span class="gradient-text">revision plan</span></h2>
+                <div class="file-badge" id="fileName"></div>
+                <div class="subject-badge" id="subjectBadge"></div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-grid" id="summaryGrid"></div>
+
+            <!-- Main Results Cards -->
+            <div class="results-grid">
+                <!-- Super Repeaters -->
+                <div class="result-card glass high-priority" id="superRepeatersCard">
+                    <div class="card-header">
+                        <i class="fas fa-crown card-icon"></i>
+                        <h3>⭐ Super Repeaters (Must Study)</h3>
+                    </div>
+                    <div class="card-content" id="superRepeatersList"></div>
+                </div>
+
+                <!-- Hot Topics -->
+                <div class="result-card glass medium-priority" id="hotTopicsCard">
+                    <div class="card-header">
+                        <i class="fas fa-fire card-icon"></i>
+                        <h3>🔥 Hot Topics (High Probability)</h3>
+                    </div>
+                    <div class="card-content" id="hotTopicsList"></div>
+                </div>
+            </div>
+
+            <!-- Patterns & Timeline -->
+            <div class="results-grid">
+                <div class="result-card glass patterns-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie card-icon"></i>
+                        <h3>📊 Question Patterns</h3>
+                    </div>
+                    <div class="patterns-grid" id="patternsGrid"></div>
+                </div>
+
+                <div class="result-card glass timeline-card">
+                    <div class="card-header">
+                        <i class="fas fa-hourglass-half card-icon"></i>
+                        <h3>⏰ Your 6‑Hour Cram Plan</h3>
+                    </div>
+                    <div class="timeline" id="timeline"></div>
+                </div>
+            </div>
+
+            <!-- Export Button -->
+            <div class="export-container">
+                <button class="btn-export" id="exportBtn">
+                    <i class="fas fa-download"></i> Download as PDF Checklist
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content glass">
+            <div class="spinner"></div>
+            <h3>Analyzing your papers...</h3>
+            <p>Our AI is finding patterns just for you</p>
+            <div class="loading-steps">
+                <div class="step" id="step1"><i class="far fa-circle"></i> Reading PDF</div>
+                <div class="step" id="step2"><i class="far fa-circle"></i> Finding Patterns</div>
+                <div class="step" id="step3"><i class="far fa-circle"></i> Creating Plan</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="errorModal">
+        <div class="modal-content glass error-modal">
+            <i class="fas fa-exclamation-triangle error-icon"></i>
+            <h3>Oops! Something went wrong</h3>
+            <p id="errorMessage"></p>
+            <button class="btn-primary" onclick="closeErrorModal()">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for last‑night warriors</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

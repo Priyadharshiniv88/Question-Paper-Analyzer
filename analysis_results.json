@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "total_questions": 25,
+    "unique_topics": 10,
+    "repeated_questions": 0
+  },
+  "patterns": {
+    "explain": 6,
+    "define": 4,
+    "what": 4,
+    "difference": 2,
+    "write": 1,
+    "state": 3,
+    "discuss": 1,
+    "how": 6,
+    "why": 1
+  },
+  "revision_plan": {
+    "hourly_plan": [
+      "Hour 5: REVIEW CORE CONCEPTS - Class, Polymorphism, Thread",
+      "Hour 6: PRACTICE 'EXPLAIN' type questions - Most common pattern"
+    ],
+    "main_pattern": "explain",
+    "top_topics": [
+      [
+        "Class",
+        6
+      ],
+      [
+        "Polymorphism",
+        3
+      ],
+      [
+        "Thread",
+        3
+      ],
+      [
+        "Exception",
+        3
+      ],
+      [
+        "Encapsulation",
+        2
+      ]
+    ]
+  }
+}
